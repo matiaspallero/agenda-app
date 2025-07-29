@@ -184,8 +184,13 @@ class AgendaApp(tk.Tk):
         style.map('Danger.TButton', background=[('active', self.DANGER_HOVER_COLOR)])
 
         # Estilo para días del calendario con tareas
-        style.configure('HasTasks.TButton', font=('Arial', 10, 'bold'))
-        style.map('HasTasks.TButton', foreground=[('!active', self.HEADER_COLOR)])
+        # Se añade 'background=self.BG_COLOR' para que no herede el fondo morado de TButton,
+        # lo que causaba que el texto (también morado) fuera invisible.
+        style.configure('HasTasks.TButton', font=('Arial', 10, 'bold'), background=self.BUTTON_COLOR)
+        # Se mantiene el texto morado para el estado normal y se define un color de fondo para el hover
+        # que sea consistente con otros elementos de la UI.
+        style.map('HasTasks.TButton', foreground=[('!active', self.FG_COLOR)],
+                                    background=[('active', self.BUTTON_HOVER_COLOR)]) # Fondo gris claro al pasar el mouse
 
         # Estilo para el día actual
         style.configure('Today.TButton', bordercolor=self.BUTTON_COLOR, borderwidth=2)
@@ -241,9 +246,9 @@ class AgendaApp(tk.Tk):
 
         # Etiqueta y Dropdown para los meses
         ttk.Label(month_year_frame, text="Mes:").grid(row=0, column=0, padx=5, sticky="w")
-        self.month_names = [calendar.month_name[i] for i in range(1, 13)]
+        self.month_names = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
         self.selected_month = tk.StringVar(self)
-        self.selected_month.set(calendar.month_name[self.current_month_num]) # Mes inicial
+        self.selected_month.set(self.month_names[self.current_month_num - 1]) # Mes inicial (current_month_num es 1-12)
         month_menu = ttk.OptionMenu(month_year_frame, self.selected_month, self.selected_month.get(), *self.month_names, command=self.update_calendar_display)
         month_menu.grid(row=0, column=1, padx=5, sticky="ew")
 

@@ -1,0 +1,5 @@
+2025-07-30|rendir lab 3||Escuela|False
+2025-07-31|aasdasdasd|dasdas|Personal|False
+2025-07-31|s|ddd|Hogar|False
+2025-07-29|CDXVcvdzczx|asdsaA|Hogar|False
+2025-07-17|asas||Gimnasio|False

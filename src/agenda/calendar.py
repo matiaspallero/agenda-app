@@ -10,8 +10,9 @@ class Calendar:
 
     def get_month_name(self):
         # Asegúrate de que month_num sea válido
+        nombres_meses = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
         if 1 <= self.month_num <= 12:
-            return calendar.month_name[self.month_num]
+            return nombres_meses[self.month_num]
         return "Mes Desconocido"
 
     def get_days_in_month(self):
