@@ -17,7 +17,8 @@ class AgendaApp(tk.Tk):
         self.set_app_icon()
 
         self.title("Agenda App")
-        self.centrar_ventana(500, 550) # Tamaño de ventana más compacto
+        self.iconbitmap(default="") # Evitar error si no se encuentra el icono
+        self.centrar_ventana(650, 550) # Tamaño de ventana más compacto
         self.resizable(False, False) # Hacer la ventana no redimensionable
         self.configure(bg=self.BG_COLOR) # Color de fondo de la ventana principal
         self.columnconfigure(0, weight=1)
@@ -222,7 +223,7 @@ class AgendaApp(tk.Tk):
                   indicatorcolor=[('selected', self.BUTTON_COLOR)]) # Color del indicador al seleccionar
 
         # Estilos para widgets de diálogo (letras más grandes)
-        dialog_font = ('Arial', 14) # Fuente grande para el texto del diálogo y la entrada
+        dialog_font = ('Arial', 14, "normal") # Fuente grande para el texto del diálogo y la entrada
         dialog_option_font = ('Arial', 12) # Fuente un poco más pequeña para las opciones
         style.configure('Dialog.TLabel', font=dialog_font, background=self.BG_COLOR)
         style.configure('Dialog.TEntry', font=dialog_font, fieldbackground=self.ENTRY_BG, foreground=self.FG_COLOR, borderwidth=1, insertcolor=self.FG_COLOR)
